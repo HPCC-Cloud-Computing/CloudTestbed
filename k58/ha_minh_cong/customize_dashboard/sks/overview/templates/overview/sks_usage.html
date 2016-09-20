@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Instance Overview" %}{% endblock %}
+
+{% block main %}
+    {% for chart in chart_data %}
+        <div class="d3_quota_bar col-md-4 fix-it">
+                <div class="d3_pie_chart_distribution"
+                      data-used={{chart.data}}></div>
+                <div class="quota_title" title="{{ chart.name }}" data-toggle="tooltip">{{ chart.name }}</div>
+        </div>
+    {% endfor %}
+    {{ table.render }}
+
+
+{% endblock %}
+
+

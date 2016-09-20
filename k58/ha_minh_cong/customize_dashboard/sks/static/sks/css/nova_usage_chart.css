@@ -1,0 +1,109 @@
+.d3_pie_chart_usage .arc {
+  stroke: #ddd; }
+  .d3_pie_chart_usage .arc.inner {
+    fill: #428bca;
+    stroke: none; }
+    .d3_pie_chart_usage .arc.inner.FULL {
+      fill: #d9534f; }
+      .d3_pie_chart_usage .arc.inner.NEARLY_FULL {
+        fill: #fdd835; }
+
+#d3_pie_chart_distribution_nova_log .arc {
+  stroke: #ffffff; }
+  #d3_pie_chart_distribution_nova_log .arc:nth-child(1n) {
+    fill: #ff0000; }
+    #d3_pie_chart_distribution_nova_log .legend-group:nth-child(1n) .legend-symbol {
+      color: #ff0000; }
+      #d3_pie_chart_distribution_nova_log .arc:nth-child(2n) {
+        fill: #00ff00; }
+        #d3_pie_chart_distribution_nova_log .legend-group:nth-child(2n) .legend-symbol {
+          color: #00ff00; }
+          #d3_pie_chart_distribution_nova_log .arc:nth-child(3n) {
+            fill: #ffff00; }
+            #d3_pie_chart_distribution_nova_log .legend-group:nth-child(3n) .legend-symbol {
+              color: #ffff00; }
+              #d3_pie_chart_distribution_nova_log .arc:nth-child(4n) {
+                fill: #8000ff; }
+                #d3_pie_chart_distribution_nova_log .legend-group:nth-child(4n) .legend-symbol {
+                  color: #8000ff; }
+                  #d3_pie_chart_distribution_nova_log .arc:nth-child(5n) {
+                    fill: #00ffff; }
+                    #d3_pie_chart_distribution_nova_log .legend-group:nth-child(5n) .legend-symbol {
+                      color: #00ffff; }
+                      #d3_pie_chart_distribution_nova_log .arc:nth-child(6n) {
+                        fill: #a2c6e5; }
+                        #d3_pie_chart_distribution_nova_log .legend-group:nth-child(6n) .legend-symbol {
+                          color: #a2c6e5; }
+                          #d3_pie_chart_distribution_nova_log .arc:nth-child(7n) {
+                            fill: #1b4162; }
+                            #d3_pie_chart_distribution_nova_log .legend-group:nth-child(7n) .legend-symbol {
+                              color: #1b4162; }
+                              #d3_pie_chart_distribution_nova_log .arc:nth-child(8n) {
+                                fill: #c1d9ee; }
+                                #d3_pie_chart_distribution_nova_log .legend-group:nth-child(8n) .legend-symbol {
+                                  color: #c1d9ee; }
+                                  #d3_pie_chart_distribution_nova_log .legend {
+                                    padding: 12px 6px;
+                                    text-align: left; }
+                                    #d3_pie_chart_distribution_nova_log .legend-group {
+                                      padding: 5px 5px; }
+                                      #d3_pie_chart_distribution_nova_log .legend-symbol {
+                                        font-size: 23px;
+                                        padding-right: 5px; }
+                                        #d3_pie_chart_distribution_nova_log .legend-symbol, #d3_pie_chart_distribution_nova_log .legend-key,
+                                        #d3_pie_chart_distribution_nova_log .legend-value {
+                                          display: inline-block;
+                                          line-height: 18px;
+                                          vertical-align: middle; }
+                                          #d3_pie_chart_distribution_nova_log .legend-key {
+                                            padding-right: 5px; }
+
+.pie-chart.danger .chart-tooltip #d3_pie_chart_distribution_nova_log span.added.legend-symbol,
+#d3_pie_chart_distribution_nova_log .pie-chart.danger .chart-tooltip span.added.legend-symbol {
+  color: #d9534f; }
+#d3_pie_chart_distribution_nova_log .legend-group {
+  padding: 1px 5px; }
+#d3_pie_chart_distribution_nova_log .legend-symbol::before {
+    content:  '\2587';
+}
+.fa, #d3_pie_chart_distribution_nova_log .legend-symbol {
+    display: inline-block;
+    font: normal normal normal 14px / 1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; }
+
+.legacy-pie-chart .arc {
+  fill: #ddd;
+  stroke-width: 1px; }
+
+
+.d3_pie_chart_usage .arc {
+  stroke: #ddd; }
+  .d3_pie_chart_usage .arc.inner {
+    fill: #428bca;
+    stroke: none; }
+    .d3_pie_chart_usage .arc.inner.FULL {
+      fill: #d9534f; }
+      .d3_pie_chart_usage .arc.inner.NEARLY_FULL {
+        fill: #fdd835; }
+#nova-summary-input{
+    min-height: 500px;
+}
+
+
+.fa, #d3_pie_chart_distribution_nova_log .legend-symbol {
+    display: inline-block;
+    font: normal normal normal 14px / 1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; }
+
+#d3_pie_chart_distribution_nova_log .legend-group {
+  padding: 1px 5px; }
+
+#display-error {
+    display:none;
+}

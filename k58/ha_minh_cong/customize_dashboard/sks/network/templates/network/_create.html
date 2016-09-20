@@ -1,0 +1,36 @@
+{% extends "horizon/common/_modal_form.html" %}
+{% load i18n %}
+
+{#{% block ng_controller %}#}
+{#    NetworkFormController as ctrl#}
+{#{% endblock %}#}
+
+{% block form_attrs %}
+    enctype="multipart/form-data"
+
+{% endblock %}
+
+{% block modal-body-right %}
+  <h3>{% trans "Description:" %}</h3>
+  <p>
+Create HMC network
+  </p>
+{% endblock %}
+{% block modal-js %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#id_with_subnet").click(function(){
+                $("#id_subnet_name").val("");
+                $("#id_cidr").val("");
+                $("#id_enable_dhcp").prop('checked', false);
+                $("#id_gateway_ip").val("");
+                $("#id_dns_nameservers").val("");
+{#                $("#id_subnet_name").reset();#}
+{#                $("#id_cidr").reset();#}
+{#                $("#id_enable_dhcp").reset();#}
+{#                $("#id_gateway_ip").reset();#}
+{#                $("#id_dns_nameservers").reset();#}
+            });
+        });
+    </script>
+{% endblock %}

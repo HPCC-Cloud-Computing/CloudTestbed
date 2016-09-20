@@ -1,0 +1,39 @@
+{% extends 'sks/base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Nova Log Summary" %}{% endblock %}
+
+{% block main %}
+    {{ table.render }}
+
+    <h2>Select date from and date to show log summary:</h2>
+    <div class="row">
+        <div  class="form-horizontal col-xs-12 col-md-8" id="nova-summary-input">
+            <dl>
+                <div class="form-group">
+                  <label class="col-md-2 control-label" for="account_name">From</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="date_from" name="date_from" type="text" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-2 control-label" for="password">To</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="date_to" name="date_to" type="text" value="">
+                    </div>
+                </div>
+            </dl>
+            <div id="display-error" class="alert alert-danger col-md-8">
+                <strong>Error: </strong> <span></span>
+            </div>
+        </div>
+        <div  class=" col-xs-6 col-md-4">
+            <div class="alert alert-info" id ="log_info" ></div>
+            <div id="d3_pie_chart_distribution_nova_log"
+                 data-url=""
+             data-used="CAL_Cloud:9CPUS=9|student:18CPUS=18|Free_CPUS:8CPUS=8">
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

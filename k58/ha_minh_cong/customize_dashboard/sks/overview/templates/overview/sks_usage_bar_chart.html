@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Instance Overview" %}{% endblock %}
+
+{% block main %}
+    {% for chart_data in chart_data_list %}
+        <div class="d3_quota_bar col-md-4 fix-it">
+
+            <div class="quota_title" title="{{ chart_data.name }}" data-toggle="tooltip"> {{ chart_data.name }}</div>
+
+            <div style="width: 250px; min-width: 250px; height: 50px; min-height: 50px; margin-bottom: 40px;">
+              <div class="chart"
+                   data-chart-type="bar_chart"
+                   data-tooltip-free='{{ chart_data.tool_tip_free }}'
+                   data-tooltip-average='Average'
+                   data-settings='{"orientation": "horizontal"}'
+                   data-used='{{ chart_data.used_data }}'
+                   data-max-value="{{ chart_data.max_value }}"
+              >
+              </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    {{ table.render }}
+{% endblock %}
+
+

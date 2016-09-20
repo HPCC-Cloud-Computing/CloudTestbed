@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block css %}
+  {% include "_stylesheets.html" %}
+  <link href='{{ STATIC_URL }} chart_dashboard/css/chart_dashboard.css' type='text/css' media='screen' rel='stylesheet' />
+{#  <link href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css" type='text/css' media='screen' rel='stylesheet' />#}
+{% endblock %}
+{% block js %}
+    {% include "chart_dashboard/_scripts.html" %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% for subnet in subnets %}
+    <ul>
+      <li>
+        {% if subnet.name|length > 0 %}
+        <em>{{ subnet.name }}</em>
+        {% endif %}
+        {{ subnet.cidr }}
+      </li>
+    </ul>
+{% endfor %}

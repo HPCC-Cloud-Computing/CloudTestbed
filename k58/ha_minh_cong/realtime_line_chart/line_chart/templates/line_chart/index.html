@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <title>jQuery UI Datepicker - Default functionality</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'line_chart/css/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'line_chart/css/index.css' %}" />
+    <script type="text/javascript" src={% static 'line_chart/js/jquery-3.1.0.min.js' %}></script>
+    <script type="text/javascript" src={% static 'line_chart/js/bootstrap.js' %}></script>
+    <script type="text/javascript" src={% static 'line_chart/js/d3.js' %}></script>
+{#    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">#}
+    <link rel="stylesheet" type="text/css" href="{% static 'line_chart/css/epoch.css' %}" />
+
+</head>
+<body>
+    <div class="container" style="padding-top:1.5rem;">
+        <h2>Real Time Charts</h2>
+        <form class="form-inline">
+            <div class="[ form-group ]">
+                <input type="checkbox" name="data-info" checked id="data-info" autocomplete="off" />
+                <div class="[ btn-group ]">
+                    <label for="data-info" class="[ btn btn-info ]">
+                        <span class="[ glyphicon glyphicon-ok ]"></span>
+                        <span> </span>
+                    </label>
+                    <label for="data-info" class="[ btn btn-default active ]">
+                        Info
+                    </label>
+                </div>
+            </div>
+            <div class="[ form-group ]">
+                <input type="checkbox" name="data-warning" id="data-warning" autocomplete="off" />
+                <div class="[ btn-group ]">
+                    <label for="data-warning" class="[ btn btn-warning ]">
+                        <span class="[ glyphicon glyphicon-ok ]"></span>
+                        <span> </span>
+                    </label>
+                    <label for="data-warning" class="[ btn btn-default active ]">
+                        Warning
+                    </label>
+                </div>
+            </div>
+            <div class="[ form-group ]">
+                <input type="checkbox" name="data-error" id="data-error" autocomplete="off" />
+                <div class="[ btn-group ]">
+                    <label for="data-error" class="[ btn btn-danger ]">
+                        <span class="[ glyphicon glyphicon-ok ]"></span>
+                        <span> </span>
+                    </label>
+                    <label for="data-error" class="[ btn btn-default active ]">
+                        Error
+                    </label>
+                </div>
+            </div>
+            <div class="[ form-group ]">
+                <span>May be error will be occur...</span>
+            </div>
+        </form>
+
+    </div>
+        <div id="real_time_line" class="epoch container" style="height: 200px;" data-epoch-container-id="epoch-container-7">
+        </div>
+    <script type="text/javascript" src={% static 'line_chart/js/epoch.js' %}></script>
+    <script type="text/javascript" src={% static 'line_chart/js/realtime_data.js' %}></script>
+
+    <script>
+{#        console.log(Date.now());#}
+{#        var timer_loop = setInterval(function() {#}
+{#            $.ajax({#}
+{#                beforeSend: function ()#}
+{#                {#}
+{#                },#}
+{#                method: "GET",#}
+{#                dataType: "json",#}
+{#                url: "/line_chart/realtime_data/" ,#}
+{#                data: {entries_number:60},#}
+{#                async:false,#}
+{#                success: function(result) {#}
+{#                    //format for result:#}
+{#                    // class HistoryResult:{#}
+{#                    // time_stamp:int#}
+{#                    //data_value:int}#}
+{#                    console.log(result);#}
+{#                    console.log(Date.now());#}
+{##}
+{#                },#}
+{#                error: function (ajaxContext) {#}
+{#                    console.log("Error"+ajaxContext.toString());#}
+{#                    //stop timer interval#}
+{#                    clearInterval(timer_loop);#}
+{#                    //show error#}
+{#                },#}
+{#                timeout: 400#}
+{#            });#}
+{#        }, 1000);#}
+        var chart_updater =null;
+        var chart_data =null;
+        var create_chart = function(){
+            var chart_numbers =0 ;
+            $("form input[type='checkbox']").each(function () {
+    {#           console.log($(this).attr('name')+ $(this).is(":checked").toString());#}
+                if( $(this).is(":checked")){
+                    chart_numbers+=1;
+                }
+            });
+            chart_data = new RealTimeData(chart_numbers);
+            var chart = $('#real_time_line').epoch({
+                type: 'time.line',
+                data: chart_data.history(),
+                windowSize: 60,
+                axes: ['left', 'bottom', 'right']
+            });
+            chart_updater = setInterval(function() {
+                if(chart_data.expired!=true){
+                    var t = chart_data.next();
+                    chart.push(t);
+                    console.log(t);
+                }
+            }, 1000);
+            chart.push(chart_data.next());
+            return chart;
+        };
+
+        var chart_time_line = create_chart();
+        var setup_event_handle = function(selector, event_name) {
+            $('form').delegate(selector, event_name, function() {
+                clearInterval(chart_updater);
+                chart_data.expired = true;
+                var chart_numbers =0 ;
+                $("form input[type='checkbox']").each(function () {
+                    if( $(this).is(":checked")){
+                        chart_numbers+=1;
+                    }
+                    $(this).prop('disabled', true);
+                });
+                setTimeout(function() {
+                    $("form input[type='checkbox']").each(function () {
+                        $(this).prop('disabled', false);
+                    })
+                },2000);
+{#                chart_time_line.update();#}
+                chart_data = new RealTimeData(chart_numbers);
+                setTimeout(function(){
+                    chart_time_line.update(chart_data.history());
+                    chart_updater = setInterval(function() {
+                        var t = chart_data.next();
+                        chart_time_line.push(t);
+                        console.log(t);
+                    }, 1000);
+                    chart_time_line.push(chart_data.next())
+                }, 1100);
+            });
+        };
+        setup_event_handle('input:checkbox','change');
+{##}
+{#    var bind_select_box_and_date_picker_change = function(settings) {#}
+{#      set_up_date_picker(date_picker_selector);#}
+{#      delegate_event_and_refresh_charts(select_box_selector, 'change', settings);#}
+{#      delegate_event_and_refresh_charts(date_picker_selector, 'changeDate', settings);#}
+{#    };#}
+{#    var set_up_date_picker =function(selector){#}
+{#      $(selector).each(function () {#}
+{#        var el = $(this);#}
+{#        el.datepicker({#}
+{#          format: 'yyyy-mm-dd',#}
+{#          timeFormat: "HH:mm:ss",#}
+{#          setDate: new Date(),#}
+{#          showButtonPanel: true,#}
+{#          language: horizon.datepickerLocale#}
+{#        });#}
+{#      });#}
+{#    }#}
+{#    bind_select_box_and_date_picker_change(settings);#}
+    </script>
+
+</body>
+</html>

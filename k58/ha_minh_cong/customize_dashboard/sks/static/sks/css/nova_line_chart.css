@@ -1,0 +1,13 @@
+
+.form-horizontal .form-group-nova-log:after{
+  clear: both;
+}
+.form-horizontal .form-group-nova-log {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.form-horizontal .form-group-nova-log:before,
+.form-horizontal .form-group-nova-log:after{
+  display: table;
+  content: " ";
+}
