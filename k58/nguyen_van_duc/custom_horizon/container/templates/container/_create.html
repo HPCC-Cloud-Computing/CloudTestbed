@@ -8,7 +8,7 @@
 {% block modal-body-right %}
   <h3>{% trans "Description:" %}</h3>
   <p>
-     <strong>{% traemplatens "Please note: " %}</strong>
+     <strong>{% trans "Please note: " %}</strong>
      {% if HORIZON_IMAGES_ALLOW_UPLOAD %}
          {% trans "If you select an image via an HTTP/HTTPS URL, the Image Location field MUST be a valid and direct URL to the image binary; it must also be accessible to the Image Service. URLs that redirect or serve error pages will result in unusable images." %}
      {% else %}
