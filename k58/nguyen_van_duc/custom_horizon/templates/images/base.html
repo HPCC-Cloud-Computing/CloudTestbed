@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+    {% include 'horizon/common/_sidebar.html' %}
+{% endblock %}
+
+{% block js %}
+    {% include "images/_scripts.html" %}
+{% endblock %}
+
+{% block css %}
+  {% include "_stylesheets.html" %}
+
+  {% load compress %}
+  {% compress css %}
+  <link href='{{ STATIC_URL }}images/scss/images.scss' type='text/scss' media='screen' rel='stylesheet' />
+  {% endcompress %}
+{% endblock %}
+
+{% block main %}
+    {% include "horizon/_messages.html" %}
+    {% block images_main %}{% endblock %}
+{% endblock %}
+

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Images" %}{% endblock %}
+
+{% block page_header %}
+    {% include "horizon/common/_page_header.html" with title=_("Images") %}
+{% endblock page_header %}
+
+{% block main %}
+    <h1>Hello<img src="/static/dashboard/img/logo.png"/></h1>
+
+    <div class="row">
+        <div class="col-sm-12">
+            {{ table.render }}
+        </div>
+    </div>
+{% endblock %}
+
+
+

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{#{% extends 'images/base.html' %}#}
+{% load i18n %}
+{% block title %}{% trans "Images_Docker" %}{% endblock %}
+
+{% block page_header %}
+    {% include "horizon/common/_page_header.html" with title=_("Docker") %}
+
+{% endblock page_header %}
+
+
+{% block main %}
+
+
+{#    <form class="form-horizontal"#}
+{#          id="linechart_general_form">#}
+{##}
+{#        <div class="form-group">#}
+{#            <label for="meter" class="control-label col-sm-2">{% trans "Name container" %}:&nbsp;</label>#}
+{#            <div class="col-sm-5">#}
+{#                <select data-line-chart-command="select_box_change"#}
+{#                        name="meter" id="meter" class="col-sm-w form-control example">#}
+{#                    {% for info in info_container %}#}
+{#                        <option value="{{ info.id }}" data-unit="{{ name }}">#}
+{#                            {{ info.name }}#}
+{#                        </option>#}
+{#                    {% endfor %}#}
+{#                </select>#}
+{#            </div>#}
+{#        </div>#}
+{#    </form>#}
+{##}
+{##}
+{#    <div class="info row detail">#}
+{#        <div class="col-sm-12">#}
+{#            <h4>{% trans "Statistics of all resources" %}</h4>#}
+{#            <hr class="header_rule"/>#}
+{#            <div class="info row detail">#}
+{#                <div class="col-sm-9 chart_container">#}
+{#                    <div class="chart"#}
+{#                         data-chart-type="line_chart"#}
+{#                         data-url="{% url 'horizon:custom_horizon:linechart_docker:data' %}"#}
+{#                         data-form-selector='#linechart_general_form'#}
+{#                         data-legend-selector="#legend"#}
+{#                         data-smoother-selector="#smoother"#}
+{#                         data-slider-selector="#slider">#}
+{#                    </div>#}
+{#                    <div id="slider"></div>#}
+{#                    <div class="col-sm-3 legend_container">#}
+{#                        <div id="smoother" title="Smoothing"></div>#}
+{#                        <div id="legend"></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+
+    </br>
+    </br>
+
+    <div class="row">
+        <div class="col-sm-12">
+            {{ tab_group.render }}
+        </div>
+    </div>
+
+{% endblock %}
