@@ -18,7 +18,12 @@ Bài viết này sẽ hướng dẫn mọi người cách làm các task về Do
     pip install docker-py
    Đọc [document](https://docker-py.readthedocs.io/en/latest/api/) để biết cách sử dụng **docker-py** cũng như các command và tham số để tùy biến cho phù hợp với mục đích của đề bài.
 
-### 1.2 Tạo dashboard mới
+### 1.2  Create a Docker group
+Theo mặc định, Docker daemon luôn chạy với quyền **root**. Lớp **Client** trong docker-py sẽ cho phép bạn giao tiếp với Docker daemon. Bạn cần tạo một docker group và add user của bạn vào group đó để không phải sử dụng quyền **root** khi sử dụng lớp **Client**.
+
+Để tạo một group `docker` và add user ta làm theo các bước tại [đây](https://docs.docker.com/engine/installation/linux/ubuntulinux/#/create-a-docker-group)
+
+### 1.3 Tạo dashboard mới
 Chúng ta cần tạo một [dashboard](https://github.com/openstack/horizon/blob/stable/mitaka/doc/source/tutorials/dashboard.rst) mới theo hướng dẫn sau:
 
     mkdir openstack_dashboard/dashboards/custom_horizon 
