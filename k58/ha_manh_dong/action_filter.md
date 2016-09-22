@@ -1,7 +1,7 @@
 ###Thêm 1 action cho table
 
 
-###**FilterAction**
+###**1. FilterAction**
 Là 1 base class có các method để thực hiện 1 filter action trong 1 table được kế thừa từ class BaseAction.
 Phương thức khởi tạo:
 ```sh
