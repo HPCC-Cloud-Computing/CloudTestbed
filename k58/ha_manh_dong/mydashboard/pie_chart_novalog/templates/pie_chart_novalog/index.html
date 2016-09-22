@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Pie_Chart_Novalog" %}{% endblock %}
+
+{% block page_header %}
+  {% include "horizon/common/_page_header.html" with title=_("Pie Chart Log Nova") %}
+{% endblock page_header %}
+
+{% block main %}
+    <div class="row">
+
+        <div class="d3_quota_bar col-lg-2 col-md-4 col-sm-4 col-xs-6">
+            <div class="d3_pie_chart_distribution"
+                data-used="{{ datapiechart }}">
+            </div>
+
+        </div>
+
+
+
+        <br ><br>
+       {{ table.render }}
+   </div>
+{% endblock %}
+
+
