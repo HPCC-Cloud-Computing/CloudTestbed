@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block css %}
+  {% include "_stylesheets.html" %}
+{#  {% load compress %}#}
+{#  {% compress css %}#}
+{#    <link href='{{ STATIC_URL }}docker/css/nova_line_chart.css' type='text/css' media='screen' rel='stylesheet' />#}
+{#    <link href='{{ STATIC_URL }}docker/css/bootstrap-datepicker3.css' type='text/css' media='screen' rel='stylesheet' />#}
+
+{#  <link href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css" type='text/css' media='screen' rel='stylesheet' />#}
+    {#  {% endcompress %}#}
+{% endblock %}
+{% block js %}
+    {% include "docker/_line_chart_scripts.html" %}
+{% endblock %}
