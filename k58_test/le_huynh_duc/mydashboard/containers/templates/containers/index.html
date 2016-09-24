@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Containers" %}{% endblock %}
+
+{% block page_header %}
+  {% include "horizon/common/_page_header.html" with title=_("Containers") %}
+{% endblock page_header %}
+
+{% block main %}
+    <div style="height: 200px; width: 200px">
+    <div class="pie-chart-distribution"
+      data-used="Controller=1|Compute=2|Object Storage=3|Block Storage=4">
+    </div>
+    <div>
+    {{ table.render }}
+{% endblock %}
+
+

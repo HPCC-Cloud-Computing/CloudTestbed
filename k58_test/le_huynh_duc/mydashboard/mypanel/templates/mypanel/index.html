@@ -1,0 +1,84 @@
+{% extends 'mydashboard/base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Docker" %}{% endblock %}
+
+{% block page_header %}
+  {% include "horizon/common/_page_header.html" with title=_("Docker") %}
+{% endblock page_header %}
+
+{% block main %}
+    <div class="row">
+    <div class="col-xs-12">
+    <form class="form-horizontal"
+            id="linechart_general_form">
+{#       ----------------     date from  ------------------  #}
+            <div class="form-group" id="date_from">
+              <label for="date_from" class="col-sm-2 control-label">DATE FROM</label>
+              <div class="col-sm-4">
+                <input data-line-chart-command-v2="date_picker_change"
+                       type="text" id="date_from" name="date_from" class="form-control example"/>
+              </div>
+            </div>
+{#            ---------------------- date to -------------------  #}
+            <div class="form-group" id="date_to">
+              <label for="date_to" class="col-sm-2 control-label">DATE TO</label>
+              <div class="col-sm-4">
+                <input data-line-chart-command-v2="date_picker_change"
+                       type="text" name="date_to" class="form-control example"/>
+              </div>
+            </div>
+{#    ------------------------- select box ------------------- #}
+            <div class="form-group">
+              <label for="date_options" class="col-sm-2 control-label">{% trans "Container:" %}</label>
+              <div class="col-sm-4">
+                <select data-line-chart-command="select_box_change"
+                        id="container_options" name="container_options" class="form-control">
+                    {% for container in container_name %}
+                        <option value="{{ container }}">{% trans container %}</option>
+                    {% endfor %}
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="date_options" class="col-sm-2 control-label">{% trans "Resource" %}</label>
+              <div class="col-sm-4">
+                <select data-line-chart-command="select_box_change"
+                        id="resource_options" name="resource_options" class="form-control">
+                        <option value="cpu">CPU</option>
+                        <option value="memory">RAM</option>
+                </select>
+              </div>
+            </div>
+
+        </form>
+    </div>
+        <div class="col-xs-12">
+            <div class="info row detail">
+              <div class="col-sm-12">
+                <h4>{% trans "Statistics of all resources" %}</h4>
+                <hr class="header_rule" />
+                <div class="info row detail">
+                  <div class="col-sm-9 chart_container">
+                    <div class="chart"
+                         data-chart-type="line_chart"
+                         data-line-chart-type-v2 = "container_line_chart"
+                         data-data="{% url 'horizon:mydashboard:mypanel:container'%}"
+                         data-form-selector='#linechart_general_form'
+                         data-legend-selector="#legend"
+                         data-smoother-selector="#smoother"
+                         data-slider-selector="#slider">
+                    </div>
+                    <div id="slider"></div>
+                    <div class="col-sm-3 legend_container">
+                      <div id="smoother" title="Smoothing"></div>
+                      <div id="legend"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

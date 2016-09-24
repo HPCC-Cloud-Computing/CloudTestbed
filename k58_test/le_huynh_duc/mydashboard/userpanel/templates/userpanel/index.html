@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Userpanel" %}{% endblock %}
+
+{% block page_header %}
+  {% include "horizon/common/_page_header.html" with title=_("Userpanel") %}
+{% endblock page_header %}
+
+{% block main %}
+<div>
+  <div id="line_chart"
+    data-chart-type="line_chart"
+    data-data="{{ json }}"
+    data-form-selector='#linechart_general_form'>
+  </div>
+</div>
+
+    <form class="form-horizontal" id="linechart_general_form">
+        <div class="form-group">
+          <label for="meter" class="control-label col-sm-2">{% trans "Metric" %}:&nbsp;</label>
+          <div class="col-sm-10">
+            <select data-line-chart-command="select_box_change" name="meter" id="meter" class="col-sm-w form-control example">
+              {% for meter in meters %}
+                <option value="{{ meter }}" data-unit="{{ meter }}">
+                  {{ meter }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+  </form>
+    <div>{{ table.render }}</div>
+{% endblock %}
+
+
